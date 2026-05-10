@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /Users/tomuzzillo/.claude/projects/-Users-tomuzzillo-Documents-repos-mio-admin-import/memory)"
+    ],
+    "additionalDirectories": [
+      "/Users/tomuzzillo/.claude/projects/-Users-tomuzzillo-Documents-repos-mio-admin-import/memory"
+    ]
+  }
+}
