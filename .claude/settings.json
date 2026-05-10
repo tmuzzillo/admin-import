@@ -17,10 +17,15 @@
       "Bash(npm install *)",
       "Bash(npx shadcn@latest init -d)",
       "Bash(npx shadcn@latest add input label textarea dialog)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git merge *)",
+      "Bash(git stash *)",
+      "Bash(npx shadcn@latest add popover command)",
+      "Bash(mkdir -p \"/Users/tomuzzillo/Documents/repos-mio/admin-import/app/\\(autenticado\\)/pedidos/[id]/preview/_components\")"
     ],
     "additionalDirectories": [
-      "/Users/tomuzzillo/.claude/projects/-Users-tomuzzillo-Documents-repos-mio-admin-import/memory"
+      "/Users/tomuzzillo/.claude/projects/-Users-tomuzzillo-Documents-repos-mio-admin-import/memory",
+      "/Users/tomuzzillo/Documents/repos-mio/admin-import/app/(autenticado)/pedidos/[id]/preview"
     ]
   }
 }
