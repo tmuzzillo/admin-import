@@ -49,7 +49,7 @@ export function ComboboxField({ value, onChange, options, onAddOption, placehold
         className={cn(
           'flex h-9 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs transition-colors',
           'hover:bg-zinc-50 focus:outline-none focus:ring-1 focus:ring-ring',
-          !value && 'text-muted-foreground'
+          !value && 'text-zinc-300'
         )}
       >
         <span className="truncate">{value || placeholder || 'Seleccionar...'}</span>

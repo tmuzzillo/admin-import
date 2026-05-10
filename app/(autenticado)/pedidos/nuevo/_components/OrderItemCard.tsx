@@ -144,7 +144,7 @@ export function OrderItemCard({
 
       {/* ── Formulario expandido ────────────────────────────────── */}
       {expanded && (
-        <div className="flex flex-col gap-5 px-6 pb-6 pt-4 bg-white border-t border-zinc-100">
+        <div className="flex flex-col gap-4 px-6 pb-6 pt-4 bg-white border-t border-zinc-100">
 
           {/* Copiar del anterior */}
           {onCopyFromPrevious && (
@@ -158,66 +158,24 @@ export function OrderItemCard({
             </button>
           )}
 
-          {/* Fila 1: Familia + Producto */}
-          <div className="grid grid-cols-4 gap-4">
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
-                Familia
-              </Label>
-              <ComboboxField
-                value={item.family}
-                onChange={val => onUpdate(item.localId, 'family', val)}
-                options={familyOptions}
-                onAddOption={onAddFamilyOption}
-                placeholder="Ej: VASOS"
-              />
-            </div>
-            <div className="col-span-3 flex flex-col gap-1.5">
-              <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+          {/* ── Campos primarios: Producto + Cantidad ── */}
+          <div className="grid grid-cols-4 gap-3">
+            <div className="col-span-3 flex flex-col gap-1">
+              <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-600">
                 Producto <span className="text-red-400">*</span>
               </Label>
               <Input
                 value={item.product_name}
                 onChange={e => onUpdate(item.localId, 'product_name', e.target.value)}
                 placeholder="Ej: Vasos papel 12 oz kraft doble pared"
-                className={`h-11 text-base font-semibold ${errors[`${item.localId}.product_name`] ? 'border-red-400' : ''}`}
+                className={`h-11 text-base font-semibold placeholder:text-zinc-300 placeholder:font-normal ${errors[`${item.localId}.product_name`] ? 'border-red-400' : ''}`}
               />
               {errors[`${item.localId}.product_name`] && (
                 <p className="text-xs text-red-500">{errors[`${item.localId}.product_name`]}</p>
               )}
             </div>
-          </div>
-
-          {/* Fila 2: Material + Medidas + Peso + Cantidad */}
-          <div className="grid grid-cols-4 gap-4">
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Material</Label>
-              <ComboboxField
-                value={item.material}
-                onChange={val => onUpdate(item.localId, 'material', val)}
-                options={materialOptions}
-                onAddOption={onAddMaterialOption}
-                placeholder="Ej: KRAFT"
-              />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Medidas</Label>
-              <Input
-                value={item.measurements}
-                onChange={e => onUpdate(item.localId, 'measurements', e.target.value)}
-                placeholder="Ej: 350ml"
-              />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Gramaje / Peso</Label>
-              <Input
-                value={item.weight}
-                onChange={e => onUpdate(item.localId, 'weight', e.target.value)}
-                placeholder="Ej: 950cc"
-              />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+            <div className="flex flex-col gap-1">
+              <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-600">
                 Cantidad <span className="text-red-400">*</span>
               </Label>
               <Input
@@ -226,7 +184,7 @@ export function OrderItemCard({
                 value={item.quantity}
                 onChange={e => onUpdate(item.localId, 'quantity', e.target.value === '' ? '' : parseInt(e.target.value))}
                 placeholder="0"
-                className={`h-11 text-lg font-bold ${errors[`${item.localId}.quantity`] ? 'border-red-400' : ''}`}
+                className={`h-11 text-lg font-bold text-center placeholder:text-zinc-300 placeholder:font-normal ${errors[`${item.localId}.quantity`] ? 'border-red-400' : ''}`}
               />
               {errors[`${item.localId}.quantity`] && (
                 <p className="text-xs text-red-500">{errors[`${item.localId}.quantity`]}</p>
@@ -234,19 +192,45 @@ export function OrderItemCard({
             </div>
           </div>
 
-          {/* Fila 3: Descripción */}
-          <div className="flex flex-col gap-1.5">
-            <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Descripción</Label>
-            <Input
-              value={item.description}
-              onChange={e => onUpdate(item.localId, 'description', e.target.value)}
-              placeholder="Ej: Doble pared, base negra, tapa transparente"
-            />
+          {/* ── Campos secundarios ── */}
+          <div className="grid grid-cols-5 gap-2">
+            <div className="flex flex-col gap-1">
+              <Label className="text-[11px] font-semibold uppercase tracking-wider text-zinc-600">Familia</Label>
+              <ComboboxField
+                value={item.family}
+                onChange={val => onUpdate(item.localId, 'family', val)}
+                options={familyOptions}
+                onAddOption={onAddFamilyOption}
+                placeholder="VASOS"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <Label className="text-[11px] font-semibold uppercase tracking-wider text-zinc-600">Material</Label>
+              <ComboboxField
+                value={item.material}
+                onChange={val => onUpdate(item.localId, 'material', val)}
+                options={materialOptions}
+                onAddOption={onAddMaterialOption}
+                placeholder="KRAFT"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <Label className="text-[11px] font-semibold uppercase tracking-wider text-zinc-600">Medidas</Label>
+              <Input className="h-8 text-sm placeholder:text-zinc-300" value={item.measurements} onChange={e => onUpdate(item.localId, 'measurements', e.target.value)} placeholder="350ml" />
+            </div>
+            <div className="flex flex-col gap-1">
+              <Label className="text-[11px] font-semibold uppercase tracking-wider text-zinc-600">Peso</Label>
+              <Input className="h-8 text-sm placeholder:text-zinc-300" value={item.weight} onChange={e => onUpdate(item.localId, 'weight', e.target.value)} placeholder="950cc" />
+            </div>
+            <div className="flex flex-col gap-1 col-span-1">
+              <Label className="text-[11px] font-semibold uppercase tracking-wider text-zinc-600">Descripción</Label>
+              <Input className="h-8 text-sm placeholder:text-zinc-300" value={item.description} onChange={e => onUpdate(item.localId, 'description', e.target.value)} placeholder="Doble pared..." />
+            </div>
           </div>
 
-          {/* Fila 4: Fotos */}
-          <div className="flex flex-col gap-1.5">
-            <Label className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Fotos</Label>
+          {/* ── Fotos ── */}
+          <div className="flex flex-col gap-1">
+            <Label className="text-[11px] font-semibold uppercase tracking-wider text-zinc-600">Fotos</Label>
             <PhotoUploadZone
               photos={item.photos}
               onAddPhoto={file => onAddPhoto(file, item.localId)}
