@@ -1,7 +1,23 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir -p /Users/tomuzzillo/.claude/projects/-Users-tomuzzillo-Documents-repos-mio-admin-import/memory)"
+      "Bash(mkdir -p /Users/tomuzzillo/.claude/projects/-Users-tomuzzillo-Documents-repos-mio-admin-import/memory)",
+      "Bash(git push *)",
+      "Bash(cat ~/.ssh/config 2>/dev/null || echo \"no ssh config\")",
+      "Read(//Users/tomuzzillo/.ssh/**)",
+      "Bash(ls ~/.ssh/*.pub 2>/dev/null)",
+      "Bash(gh auth *)",
+      "Read(//Users/tomuzzillo/Documents/repos-mio/**)",
+      "Read(//Users/tomuzzillo/Documents/**)",
+      "Read(//Users/tomuzzillo/**)",
+      "Bash(xargs -I{} dirname {})",
+      "Bash(git remote *)",
+      "Bash(security find-internet-password *)",
+      "Bash(git checkout *)",
+      "Bash(npm install *)",
+      "Bash(npx shadcn@latest init -d)",
+      "Bash(npx shadcn@latest add input label textarea dialog)",
+      "Bash(npm run *)"
     ],
     "additionalDirectories": [
       "/Users/tomuzzillo/.claude/projects/-Users-tomuzzillo-Documents-repos-mio-admin-import/memory"
